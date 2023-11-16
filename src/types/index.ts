@@ -19,3 +19,11 @@ export interface InfoStateType {
   time: number;
   error: string;
 }
+
+export enum CellType {
+  empty = 0,
+  wall = 1,
+  path = 2,
+  start = 3,
+  end = 4
+}

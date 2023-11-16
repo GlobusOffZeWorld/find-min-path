@@ -21,5 +21,4 @@ export const infoSlice = createSlice({
 });
 
 export const { setTime, setError } = infoSlice.actions;
-
 export default infoSlice.reducer;

@@ -1,22 +1,21 @@
 import styled from 'styled-components';
 
-import background from './assets/background.png';
-
-export const Wrapper = styled.div.attrs<{ $background?: string }>(props => ({
-  $background: props.$background || background
-}))`
+export const Wrapper = styled.div`
   display: flex;
-  height: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
-  background: url(${props => props.$background});
-  background-size: cover;
-  background-position: center;
+  height: 100%;
+  position: fixed;
+  padding: 50px;
+  background: linear-gradient(135deg, #a18484, #8aa9c0);
+`;
+
+export const Info = styled.main`
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 29px 20px;
-  transition: 0.4s;
-  position: fixed;
-  top: 0;
-  left: 0;
-  overflow: hidden;
+  height: 100%;
 `;
