@@ -29,6 +29,7 @@ export const ButtonContainer = () => {
       path!.forEach((edge: Cell) => (pathMatrix[edge[0]][edge[1]] = 2));
       dispatch(setPath({ pathMatrix: pathMatrix }));
       dispatch(setTime({ time }));
+      dispatch(setError({ error: '' }));
     }
   };
 
