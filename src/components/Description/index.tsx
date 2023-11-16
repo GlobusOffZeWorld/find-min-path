@@ -14,7 +14,7 @@ export const Description = () => {
       <h1>Find min path test app for elinext</h1>
       <Article>
         <ResizedImage src={leftClickImage} />
-        <h2>Click left mouse button to make/remove wall</h2>
+        <h2>Click&Move left mouse button to make/remove wall</h2>
       </Article>
       <Article>
         <ResizedImage src={rightClickImage} />

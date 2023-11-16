@@ -7,7 +7,7 @@ import { setEnd, setStart } from '@/redux/slices/pathSlice';
 import { RootState } from '@/redux/store';
 import { CellProps, CellType } from '@/types';
 
-import { Wrapper } from './style';
+import { StyledCell } from './style';
 
 export const Cell: FC<CellProps> = ({ row, col }) => {
   const path = useSelector((state: RootState) => state.path.path);
@@ -48,8 +48,12 @@ export const Cell: FC<CellProps> = ({ row, col }) => {
     }
   };
 
-  const handleLeftMouseClick = () => {
+  const handleLeftMouse = (e: MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
     if (cellState === CellType.start || cellState === CellType.end) {
+      return;
+    }
+    if (!(e.buttons === 1 && e.type === 'mouseenter') && e.type !== 'click') {
       return;
     }
     setCellState(cellState === CellType.wall ? CellType.empty : CellType.wall);
@@ -59,10 +63,11 @@ export const Cell: FC<CellProps> = ({ row, col }) => {
   };
 
   return (
-    <Wrapper
+    <StyledCell
       $color={cellColor[cellState]}
       onContextMenu={handleRightMouseClick}
-      onClick={handleLeftMouseClick}
+      onMouseEnter={handleLeftMouse}
+      onClick={handleLeftMouse}
     />
   );
 };
