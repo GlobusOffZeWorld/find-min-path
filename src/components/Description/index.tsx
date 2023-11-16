@@ -24,9 +24,11 @@ export const Description = () => {
         <ResizedImage src={timer} />
         <h2>Time: {time}ms</h2>
       </Article>
-      <Article>
-        <h2>{error}</h2>
-      </Article>
+      {error && (
+        <Article>
+          <h2>{error}</h2>
+        </Article>
+      )}
     </Wrapper>
   );
 };

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledButton = styled.button<{ $isPressed?: boolean }>`
+export const StyledButton = styled.button`
   background-color: #00000060;
   border-radius: 28px;
   border: none;

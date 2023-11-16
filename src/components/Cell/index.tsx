@@ -52,8 +52,10 @@ export const Cell: FC<CellProps> = ({ row, col }) => {
     if (cellState === CellType.start || cellState === CellType.end) {
       return;
     }
-    setCellState(cellState === 1 ? 0 : 1);
-    dispatch(setCell({ row, col, value: cellState === 1 ? 0 : 1 }));
+    setCellState(cellState === CellType.wall ? CellType.empty : CellType.wall);
+    dispatch(
+      setCell({ row, col, value: cellState === CellType.wall ? CellType.empty : CellType.wall })
+    );
   };
 
   return (
