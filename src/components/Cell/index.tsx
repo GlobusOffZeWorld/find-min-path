@@ -1,27 +1,12 @@
 import { FC, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import styled from 'styled-components';
 
 import { setCell } from '@/redux/slices/gridSlice';
 import { setEnd, setStart } from '@/redux/slices/pathSlice';
 import { RootState } from '@/redux/store';
+import { CellProps } from '@/types';
 
-interface Cell {
-  row: number;
-  column: number;
-}
-
-const Wrapper = styled.button<{ $color: string }>`
-  background-color: ${props => props.$color};
-  width: 100%;
-  height: 100%;
-  border: none;
-  transition: 0.1s;
-  cursor: pointer;
-  &:hover {
-    outline: 2px solid #ffffff;
-  }
-`;
+import { Wrapper } from './style';
 
 const pickColor = (value: number) => {
   switch (value) {
@@ -46,13 +31,13 @@ enum CellType {
   end = 4
 }
 
-export const Cell: FC<Cell> = ({ row, column }) => {
+export const Cell: FC<CellProps> = ({ row, col }) => {
   const path = useSelector((state: RootState) => state.path.path);
   const start = useSelector((state: RootState) => state.path.start);
   const end = useSelector((state: RootState) => state.path.end);
   const [cellState, setCellState] = useState<CellType>(CellType.empty);
   useEffect(() => {
-    setCellState(path[row][column]);
+    setCellState(path[row][col]);
   }, path);
 
   const dispatch = useDispatch();
@@ -74,7 +59,7 @@ export const Cell: FC<Cell> = ({ row, column }) => {
         switch (cellState) {
           case CellType.empty:
             setCellState(isStartedType.pointType);
-            dispatch(isStartedType.cb({ cell: [row, column] }));
+            dispatch(isStartedType.cb({ cell: [row, col] }));
             break;
           case CellType.start:
             setCellState(CellType.empty);
@@ -91,7 +76,7 @@ export const Cell: FC<Cell> = ({ row, column }) => {
           return;
         }
         setCellState(cellState === 1 ? 0 : 1);
-        dispatch(setCell({ row, column, value: cellState === 1 ? 0 : 1 }));
+        dispatch(setCell({ row, col, value: cellState === 1 ? 0 : 1 }));
       }}
     />
   );

@@ -1,12 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 import { FIELD_SIZE } from '@/constants';
+import { GridStateType } from '@/types';
 
-interface GridState {
-  matrix: number[][];
-}
-
-const initialState: GridState = {
+const initialState: GridStateType = {
   matrix: new Array(FIELD_SIZE).fill(new Array(FIELD_SIZE).fill(0))
 };
 
@@ -14,11 +11,11 @@ export const gridSlice = createSlice({
   name: 'grid',
   initialState,
   reducers: {
-    setCell: (state, { payload: { row, column, value } }) => {
-      state.matrix[row][column] = value;
+    setCell: (state, { payload: { row, col, value } }) => {
+      state.matrix[row][col] = value;
     },
     setGrid: (state, { payload: { pathMatrix } }) => {
-      state.matrix = pathMatrix.map((row: number[]) => row.map(column => column));
+      state.matrix = pathMatrix.map((row: number[]) => row.map(col => col));
     },
     clearGrid: state => {
       state.matrix = state.matrix.map(row => row.map(() => 0));
