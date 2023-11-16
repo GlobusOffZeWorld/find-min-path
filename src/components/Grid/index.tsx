@@ -1,21 +1,22 @@
 import styled from 'styled-components';
 
 import { Cell } from '@/components/Cell';
+import { FIELD_SIZE } from '@/constants';
 
 const Wrapper = styled.div`
   display: grid;
   align-content: center;
-  grid-template-rows: repeat(10, 1fr);
-  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(${FIELD_SIZE}, 1fr);
+  grid-template-columns: repeat(${FIELD_SIZE}, 1fr);
   flex-wrap: wrap;
-  gap: 1px;
-  background-color: black;
+  gap: 2px;
+  background-color: #00000060;
   width: 800px;
   height: 800px;
 `;
 
 export const Grid = () => {
-  const cells = new Array(100).fill(0);
+  const cells = new Array(FIELD_SIZE ** 2).fill(0);
 
   return (
     <Wrapper>
@@ -23,8 +24,8 @@ export const Grid = () => {
         return (
           <Cell
             key={index}
-            row={Math.trunc(index / 10)}
-            column={index % 10}
+            row={Math.trunc(index / FIELD_SIZE)}
+            column={index % FIELD_SIZE}
           />
         );
       })}

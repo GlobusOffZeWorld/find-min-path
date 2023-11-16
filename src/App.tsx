@@ -11,7 +11,8 @@ const Wrapper = styled.div`
   width: 100%;
   height: 100%;
   position: fixed;
-  background-color: gray;
+  /* background-color: #a18484; */
+  background: linear-gradient(135deg, #a18484, #8aa9c0);
 `;
 
 export const App = () => {
