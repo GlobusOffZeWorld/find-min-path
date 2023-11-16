@@ -8,18 +8,19 @@ import { Description } from './components/Description';
 const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
   height: 100%;
   position: fixed;
+  padding: 50px;
   background: linear-gradient(135deg, #a18484, #8aa9c0);
 `;
 
 const Main = styled.main`
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   height: 100%;
 `;
@@ -28,11 +29,11 @@ export const App = () => {
   return (
     <div className="App">
       <Wrapper>
-        <Description />
         <Main>
-          <Grid />
+          <Description />
           <ButtonContainer />
         </Main>
+        <Grid />
       </Wrapper>
     </div>
   );

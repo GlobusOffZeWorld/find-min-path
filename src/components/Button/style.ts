@@ -6,6 +6,7 @@ export const Wrapper = styled.button<{ $isPressed?: boolean }>`
   border: none;
   color: white;
   width: fit-content;
+  height: fit-content;
   padding: 15px 25px;
   font-size: 24px;
   cursor: pointer;

@@ -10,6 +10,6 @@ export const Wrapper = styled.div`
   flex-wrap: wrap;
   gap: 2px;
   background-color: #00000060;
-  width: 800px;
-  height: 800px;
+  min-width: 900px;
+  min-height: 900px;
 `;
