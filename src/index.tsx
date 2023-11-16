@@ -8,10 +8,10 @@ import { store } from '@/redux/store';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
-  <div>
+  <React.StrictMode>
     <Global />
     <Provider store={store}>
       <App />
     </Provider>
-  </div>
+  </React.StrictMode>
 );
