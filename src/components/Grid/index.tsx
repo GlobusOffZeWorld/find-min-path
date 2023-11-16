@@ -7,7 +7,10 @@ export const Grid = () => {
   const cells = new Array(FIELD_SIZE ** 2).fill(0);
 
   return (
-    <Wrapper>
+    <Wrapper
+      onContextMenu={e => e.preventDefault()}
+      onClick={e => e.preventDefault()}
+    >
       {cells.map((_, index) => {
         return (
           <Cell

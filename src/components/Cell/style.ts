@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.button<{ $color: string }>`
+export const StyledCell = styled.button<{ $color: string }>`
   background-color: ${props => props.$color};
   width: 100%;
   height: 100%;
