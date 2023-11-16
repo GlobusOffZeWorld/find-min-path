@@ -1,14 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 import { FIELD_SIZE } from '@/constants';
+import { PathStateType } from '@/types';
 
-interface PathType {
-  path: number[][];
-  start: [number, number] | null;
-  end: [number, number] | null;
-}
-
-const initialState: PathType = {
+const initialState: PathStateType = {
   path: new Array(FIELD_SIZE).fill(new Array(FIELD_SIZE).fill(0)),
   start: null,
   end: null
@@ -19,10 +14,12 @@ export const pathSlice = createSlice({
   initialState,
   reducers: {
     setPath: (state, { payload: { pathMatrix } }) => {
-      state.path = pathMatrix.map((row: number[]) => row.map(column => column));
+      state.path = pathMatrix.map((row: number[]) => row.map(col => col));
     },
     clearPath: state => {
       state.path = state.path.map(row => row.map(() => 0));
+      state.start = null;
+      state.end = null;
     },
     setStart: (state, { payload: { cell } }) => {
       state.start = cell;
