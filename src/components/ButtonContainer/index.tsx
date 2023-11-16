@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { Button } from '@/components/Button';
 import { clearGrid } from '@/redux/slices/gridSlice';
+import { setError, setTime } from '@/redux/slices/infoSlice';
 import { clearPath, setPath } from '@/redux/slices/pathSlice';
 import { RootState } from '@/redux/store';
 import { Cell } from '@/types';
@@ -19,16 +20,23 @@ export const ButtonContainer = () => {
 
   const handleBuildPathBtn = () => {
     if (start && end) {
-      const path = findMinPath(matrix, start, end);
+      const [path, time] = findMinPath(matrix, start, end);
+      if (!path) {
+        dispatch(setError({ error: 'Error: No path :(' }));
+        return;
+      }
       const pathMatrix = matrix.map(row => row.map(col => col));
       path!.forEach((edge: Cell) => (pathMatrix[edge[0]][edge[1]] = 2));
       dispatch(setPath({ pathMatrix: pathMatrix }));
+      dispatch(setTime({ time }));
     }
   };
 
   const handleClearBtn = () => {
     dispatch(clearGrid());
     dispatch(clearPath());
+    dispatch(setTime({ time: 0 }));
+    dispatch(setError({ error: '' }));
   };
 
   return (

@@ -14,3 +14,8 @@ export interface PathStateType {
   start: Cell | null;
   end: Cell | null;
 }
+
+export interface InfoStateType {
+  time: number;
+  error: string;
+}
