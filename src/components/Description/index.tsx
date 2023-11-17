@@ -1,32 +1,69 @@
+import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
+import useMediaQuery from 'usehooks-ts/dist/esm/useMediaQuery/useMediaQuery';
 
+import doubleTouch from '@/assets/icons/double-touch.png';
+import errorImage from '@/assets/icons/error.png';
 import leftClickImage from '@/assets/icons/left-click.png';
 import rightClickImage from '@/assets/icons/right-click.png';
 import timer from '@/assets/icons/timer.png';
+import touch from '@/assets/icons/touch.png';
+import { devices } from '@/constants/devices';
 import { RootState } from '@/redux/store';
 
-import { Article, ResizedImage, Wrapper } from './style';
+import { Article, ResizedImage, StyledH1, StyledH2, Wrapper } from './style';
 
 export const Description = () => {
+  const isLargerThan1024 = useMediaQuery(`${devices.tablet}`);
+
   const { time, error } = useSelector((state: RootState) => state.info);
+
+  const desktopArticles = useMemo(
+    () => (
+      <>
+        <Article>
+          <ResizedImage src={leftClickImage} />
+          <StyledH2>*Click&Move* left mouse button to create/remove wall</StyledH2>
+        </Article>
+        <Article>
+          <ResizedImage src={rightClickImage} />
+          <StyledH2>
+            *Double click* / *Click right mouse button* to create/remove start/end
+          </StyledH2>
+        </Article>
+      </>
+    ),
+    []
+  );
+
+  const mobileArticles = useMemo(
+    () => (
+      <>
+        <Article>
+          <ResizedImage src={touch} />
+          <StyledH2>*Touch* to create/remove wall</StyledH2>
+        </Article>
+        <Article>
+          <ResizedImage src={doubleTouch} />
+          <StyledH2>*Double touch* to create/remove start/end</StyledH2>
+        </Article>
+      </>
+    ),
+    []
+  );
+
   return (
     <Wrapper>
-      <h1>Find min path test app for elinext</h1>
-      <Article>
-        <ResizedImage src={leftClickImage} />
-        <h2>Click&Move left mouse button to make/remove wall</h2>
-      </Article>
-      <Article>
-        <ResizedImage src={rightClickImage} />
-        <h2>Click right mouse button to make/remove start/end</h2>
-      </Article>
+      <StyledH1>Find min path test app for elinext</StyledH1>
+      {isLargerThan1024 ? desktopArticles : mobileArticles}
       <Article>
         <ResizedImage src={timer} />
-        <h2>Time: {time}ms</h2>
+        <StyledH2>Time: {time}ms</StyledH2>
       </Article>
       {error && (
         <Article>
-          <h2>{error}</h2>
+          <ResizedImage src={errorImage} />
+          <StyledH2>{error}</StyledH2>
         </Article>
       )}
     </Wrapper>
