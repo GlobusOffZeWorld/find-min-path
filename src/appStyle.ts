@@ -12,7 +12,9 @@ export const Wrapper = styled.div`
   position: fixed;
   padding: 10px;
   gap: 20px;
-  background: linear-gradient(135deg, #a18484, #8aa9c0);
+  background: #dae2f8;
+  background: -webkit-linear-gradient(135deg, #dae2f8, #d6a4a4);
+  background: linear-gradient(135deg, #dae2f8, #d6a4a4);
   overflow-y: auto;
   touch-action: manipulation;
   @media ${devices.tablet} {

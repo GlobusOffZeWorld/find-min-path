@@ -1,6 +1,6 @@
 const breakpoints = {
   sm: '360px',
-  md: '1100px',
+  md: '1024px',
   lg: '1440px'
 };
 
