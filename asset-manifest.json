@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/find-min-path/static/js/main.d1767834.js",
+    "main.js": "/find-min-path/static/js/main.eb1f90d6.js",
     "index.html": "/find-min-path/index.html",
-    "main.d1767834.js.map": "/find-min-path/static/js/main.d1767834.js.map"
+    "main.eb1f90d6.js.map": "/find-min-path/static/js/main.eb1f90d6.js.map"
   },
   "entrypoints": [
-    "static/js/main.d1767834.js"
+    "static/js/main.eb1f90d6.js"
   ]
 }
