@@ -9,6 +9,9 @@ export const Wrapper = styled.div`
   align-items: center;
   height: 100%;
   gap: 10px;
+  @media ${devices.tablet} {
+    gap: 20px;
+  }
   @media ${devices.desktop} {
     gap: 40px;
   }
@@ -18,12 +21,19 @@ export const Article = styled.article`
   display: flex;
   flex-direction: row;
   align-self: start;
-  gap: 20px;
+  gap: 10px;
   align-items: center;
+  @media ${devices.desktop} {
+    gap: 20px;
+  }
 `;
 
 export const StyledH1 = styled.h1`
   font-size: 18px;
+  text-align: center;
+  @media ${devices.tablet} {
+    font-size: 20px;
+  }
   @media ${devices.desktop} {
     font-size: 28px;
   }
@@ -31,6 +41,9 @@ export const StyledH1 = styled.h1`
 
 export const StyledH2 = styled.h1`
   font-size: 14px;
+  @media ${devices.tablet} {
+    font-size: 16px;
+  }
   @media ${devices.desktop} {
     font-size: 20px;
   }

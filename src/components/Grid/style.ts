@@ -9,14 +9,13 @@ export const Wrapper = styled.div`
   grid-template-rows: repeat(${FIELD_SIZE}, 1fr);
   grid-template-columns: repeat(${FIELD_SIZE}, 1fr);
   flex-wrap: wrap;
-  gap: 2px;
+  gap: 1px;
   background-color: #00000060;
   height: 90vmin;
+  width: auto;
   aspect-ratio: 1 / 1;
-  @media ${devices.desktop} {
-    flex-direction: row;
-    min-width: 90vmin;
-    max-width: 90vmin;
-    width: 100%;
+  @media ${devices.tablet} {
+    width: 90vmin;
+    height: auto;
   }
 `;

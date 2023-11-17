@@ -1,7 +1,6 @@
 import { Cell } from '@/types';
 
-export const findMinPath = (grid: number[][], start: Cell, end: Cell): [Cell[] | null, number] => {
-  const startTime = new Date().getTime();
+export const findMinPath = (grid: number[][], start: Cell, end: Cell): Cell[] | null => {
   class Queue<T> {
     private items: T[];
 
@@ -96,7 +95,5 @@ export const findMinPath = (grid: number[][], start: Cell, end: Cell): [Cell[] |
   }
 
   const path = shortestPath(grid, start, end);
-  const endTime = new Date().getTime();
-  const resultTime = endTime - startTime;
-  return [path, resultTime];
+  return path;
 };

@@ -20,7 +20,13 @@ export const ButtonContainer = () => {
 
   const handleBuildPathBtn = () => {
     if (start && end) {
-      const [path, time] = findMinPath(matrix, start, end);
+      const startTime = performance.now();
+
+      const path = findMinPath(matrix, start, end);
+
+      const endTime = performance.now();
+      const resultTime = endTime - startTime;
+
       if (!path) {
         dispatch(setError({ error: 'Error: No path :(' }));
         return;
@@ -28,7 +34,7 @@ export const ButtonContainer = () => {
       const pathMatrix = matrix.map(row => row.map(col => col));
       path!.forEach((edge: Cell) => (pathMatrix[edge[0]][edge[1]] = 2));
       dispatch(setPath({ pathMatrix: pathMatrix }));
-      dispatch(setTime({ time }));
+      dispatch(setTime({ time: Math.round(resultTime) }));
       dispatch(setError({ error: '' }));
     }
   };

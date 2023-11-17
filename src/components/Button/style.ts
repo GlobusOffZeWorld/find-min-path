@@ -16,8 +16,11 @@ export const StyledButton = styled.button`
   &:hover {
     background-color: #49494961;
   }
+  @media ${devices.tablet} {
+    font-size: 16px;
+  }
   @media ${devices.desktop} {
-    font-size: 24px;
+    font-size: 20px;
     padding: 15px 25px;
     border-radius: 28px;
   }

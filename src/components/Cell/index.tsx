@@ -48,12 +48,12 @@ export const Cell: FC<CellProps> = ({ row, col }) => {
     }
   };
 
-  const handleLeftMouse = (e: MouseEvent<HTMLButtonElement>) => {
+  const handleLeftMouseClick = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     if (cellState === CellType.start || cellState === CellType.end) {
       return;
     }
-    if (!(e.buttons === 1 && e.type === 'mouseenter') && e.type !== 'click') {
+    if (!(e.buttons === 1 && e.type === 'mouseenter') && e.type !== 'mousedown') {
       return;
     }
     setCellState(cellState === CellType.wall ? CellType.empty : CellType.wall);
@@ -62,12 +62,20 @@ export const Cell: FC<CellProps> = ({ row, col }) => {
     );
   };
 
+  const handleMouseEvent = (e: MouseEvent<HTMLButtonElement>) => {
+    if (e.button === 0) {
+      handleLeftMouseClick(e);
+    } else if (e.button === 2) {
+      handleRightMouseClick(e);
+    }
+  };
+
   return (
     <StyledCell
       $color={cellColor[cellState]}
-      onContextMenu={handleRightMouseClick}
-      onMouseEnter={handleLeftMouse}
-      onClick={handleLeftMouse}
+      onMouseEnter={handleMouseEvent}
+      onMouseDown={handleMouseEvent}
+      onDoubleClick={handleRightMouseClick}
     />
   );
 };
