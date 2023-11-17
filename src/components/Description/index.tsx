@@ -5,28 +5,28 @@ import rightClickImage from '@/assets/icons/right-click.png';
 import timer from '@/assets/icons/timer.png';
 import { RootState } from '@/redux/store';
 
-import { Article, ResizedImage, Wrapper } from './style';
+import { Article, ResizedImage, StyledH1, StyledH2, Wrapper } from './style';
 
 export const Description = () => {
   const { time, error } = useSelector((state: RootState) => state.info);
   return (
     <Wrapper>
-      <h1>Find min path test app for elinext</h1>
+      <StyledH1>Find min path test app for elinext</StyledH1>
       <Article>
         <ResizedImage src={leftClickImage} />
-        <h2>Click&Move left mouse button to make/remove wall</h2>
+        <StyledH2>Click&Move left mouse button to make/remove wall</StyledH2>
       </Article>
       <Article>
         <ResizedImage src={rightClickImage} />
-        <h2>Click right mouse button to make/remove start/end</h2>
+        <StyledH2>Click right mouse button to make/remove start/end</StyledH2>
       </Article>
       <Article>
         <ResizedImage src={timer} />
-        <h2>Time: {time}ms</h2>
+        <StyledH2>Time: {time}ms</StyledH2>
       </Article>
       {error && (
         <Article>
-          <h2>{error}</h2>
+          <StyledH2>{error}</StyledH2>
         </Article>
       )}
     </Wrapper>

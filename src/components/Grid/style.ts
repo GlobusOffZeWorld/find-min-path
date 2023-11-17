@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import { FIELD_SIZE } from '@/constants';
+import { devices } from '@/constants/devices';
 
 export const Wrapper = styled.div`
   display: grid;
@@ -10,6 +11,12 @@ export const Wrapper = styled.div`
   flex-wrap: wrap;
   gap: 2px;
   background-color: #00000060;
-  min-width: 900px;
-  min-height: 900px;
+  height: 90vmin;
+  aspect-ratio: 1 / 1;
+  @media ${devices.desktop} {
+    flex-direction: row;
+    min-width: 90vmin;
+    max-width: 90vmin;
+    width: 100%;
+  }
 `;
